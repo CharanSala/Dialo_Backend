@@ -27,6 +27,10 @@ app.use(cors());
 app.use(express.json());
 const SECRET_KEY = process.env.SECRET_KEY;
 
+app.get("/uptime", (req, res) => {
+  res.status(200).json({ status: "OK", message: "Server is alive 🚀" });
+});
+
 app.post("/register", async (req, res) => {
   const { name, phone, password } = req.body;
 
