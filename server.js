@@ -120,8 +120,8 @@ app.get("/api/users", async (req, res) => {
     if (!userId) {
       return res.status(400).json({ message: "User ID is required" });
     }
+    const members = await Member.find({ user: userId }).sort({ createdAt: 1 });
 
-    const members = await Member.find({ user: userId }).sort({ createdAt: -1 });
     res.json(members);
   } catch (error) {
     console.error(error);
